@@ -122,9 +122,7 @@ def test_model_accuracy(train_model):
 
 
 def test_model_accuracy_improves(train_model):
-    """
-    新しいモデルの精度が previous_accuracy.txt の値以上であることを検証
-    """
+    """新しいモデルの精度が previous_accuracy.txt の値以上であることを検証"""
     import os
     model, X_test, y_test = train_model
     y_pred = model.predict(X_test)
