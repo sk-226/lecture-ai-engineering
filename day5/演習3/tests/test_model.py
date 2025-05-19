@@ -122,17 +122,18 @@ def test_model_accuracy(train_model):
 
 
 def test_model_accuracy_improves(train_model):
-    """
-    新しいモデルの精度が previous_accuracy.txt の値以上であることを検証
-    """
+    """新しいモデルの精度が previous_accuracy.txt の値以上であることを検証"""
     import os
+
     model, X_test, y_test = train_model
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
-    prev_acc_path = os.path.join(os.path.dirname(__file__), '../previous_accuracy.txt')
-    with open(prev_acc_path, 'r') as f:
+    prev_acc_path = os.path.join(os.path.dirname(__file__), "../previous_accuracy.txt")
+    with open(prev_acc_path, "r") as f:
         previous_accuracy = float(f.read().strip())
-    assert accuracy >= previous_accuracy, f"モデル精度が前回より低下: {accuracy} < {previous_accuracy}"
+    assert (
+        accuracy >= previous_accuracy
+    ), f"モデル精度が前回より低下: {accuracy} < {previous_accuracy}"
 
 
 def test_model_inference_time(train_model):
